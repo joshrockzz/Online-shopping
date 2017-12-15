@@ -1,17 +1,6 @@
 
 <%@include file="./shared/navigation.jsp"%>
-<script type="text/javascript">
- 
-	$(document).ready(function(){
-        $(	'a[data-toggle="tab"]').on('show.bs.tab', function(e) {
-            localStorage.setItem('activeTab', $(e.target).attr('href'));
-        });
-        var activeTab = localStorage.getItem('activeTab');
-        if(activeTab){
-            $('#admincontrol a[href="' + activeTab + '"]').tab('show');
-        }
-    });   
-    </script>
+
 <div class="container-fluid">
 
 	<ul id="admincontrol" class="nav nav-tabs" role="tablist">
@@ -332,7 +321,7 @@
 					</thead>
 
 					<c:forEach var="list" items="${productList}">
-						<td><img src="${images}/${list.id}.jpg" class="img-thumbnail"
+						<td><img src="${images}/products/${list.id}.jpg" class="img-thumbnail"
 							height="100" width="100"></td>
 						<td>${list.id}</td>
 						<td>${list.brand}</td>
@@ -353,15 +342,4 @@
 	</div>
 </div>
 
-<script>
-// Initialize tooltip component
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-
-// Initialize popover component
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
-</script>
 <%@include file="./shared/footer.jsp"%>

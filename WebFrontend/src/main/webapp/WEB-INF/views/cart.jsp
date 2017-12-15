@@ -59,8 +59,6 @@
 								</c:forEach>
 							</c:forEach>
 
-
-
 							<tr>
 								<td></td>
 								<td></td>
@@ -72,12 +70,10 @@
 
 
 							<tr>
-								<td>
-									<a class="btn btn-primary" href="allproduct">
-										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-										Continue Shopping
-									</a>
-								</td>
+								<td><a class="btn btn-primary" href="allproduct"> <i
+										class="fa fa-shopping-cart" aria-hidden="true"></i> Continue
+										Shopping
+								</a></td>
 
 								<td>
 
@@ -104,14 +100,14 @@
 
 			</div>
 
-			<a class="btn btn-primary" href="allproduct">
-				<i class="fa fa-shopping-cart" aria-hidden="true"></i> Continue
+			<a class="btn btn-primary" href="allproduct"> <i
+				class="fa fa-shopping-cart" aria-hidden="true"></i> Continue
 				Shopping
 			</a>
-			
+
 
 		</c:otherwise>
 	</c:choose>
 </div>
-<br/>
+<br />
 <%@include file="./shared/footer.jsp"%>

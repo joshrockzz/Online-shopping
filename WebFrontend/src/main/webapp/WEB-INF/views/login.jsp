@@ -30,77 +30,103 @@
 </head>
 <body>
 
-<div class="container-fluid">
-		
-<nav class="navbar navbar-expand-sm navbar-dark" style="background: coral;">
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
+	<div class="container-fluid">
 
-<!-- Brand -->
-<a class="navbar-brand" href="${contextRoot}/home">Home</a>
-</nav>
-</div>
+		<nav class="navbar navbar-expand-sm navbar-dark"
+			style="background: coral;">
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#nav-content" aria-controls="nav-content"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Brand --> <a class="navbar-brand" href="${contextRoot}/home">Home</a>
+		</nav>
+	</div>
 
 
-<!-- Login Form -->
+	<!-- Login Form -->
 	<br />
-	
+
 	<center>
-	<div class="container">
-	<c:if test="${not empty message }">
-	<div class="col-md-offset-3 col-md-6">
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-	 <span aria-hidden="true">&times;</span>
-  </button>
-	<strong>${message}</strong>
-	</div>
-	</div>
-</c:if>
-		<div class="card w-25">
-			<h3 class="card-header">Login here</h3>
-			<div class="card-body">
-				<form action="${contextRoot}/login" method="post">
-					<div class="form-group row">
-						<label for="username" class="col-xs-3 col-form-label mr-5">
-							Username</label>
-						<div class="col-xs-9">
-							<input type="text" class="form-control" id="username"
-								name="username" placeholder="Enter your username" required="true" size="35" />
-						</div>
+		<div class="container">
+			<c:if test="${not empty message }">
+				<div class="col-md-offset-3 col-md-6">
+					<div class="alert alert-warning alert-dismissible fade show"
+						role="alert" id="alert">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>${message}</strong>
 					</div>
-					
-					<div class="form-group row">
-						<label for="confirmPassword" class="col-xs-3 col-form-label mr-5">
-							Password</label>
-						<div class="col-xs-9">
-							<input type="password" class="form-control"
-								placeholder="Enter your password" id="password"
-								name="password" required="true" size="35" />
-						</div>
+				</div>
+			</c:if>
+
+			<c:if test="${not empty success }">
+				<div class="col-md-offset-3 col-md-6">
+					<div class="alert alert-success alert-dismissible fade show"
+						role="alert" id="alert">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>${success}</strong>
 					</div>
-					
-					<div class="form-group row ">
-						<div class="offset-xs-3 col-xs-9">
-							<button type="submit" class="btn btn-primary">Login</button>
-								
+				</div>
+			</c:if>
+
+			<div class="card w-25">
+				<h3 class="card-header">Login here</h3>
+				<div class="card-body">
+					<form action="${contextRoot}/login" method="post">
+						<div class="form-group row">
+							<label for="username" class="col-xs-3 col-form-label mr-5">
+								Username</label>
+							<div class="col-xs-9">
+								<input type="text" class="form-control" id="username"
+									name="username" placeholder="Enter your username"
+									required="true" size="35" />
+							</div>
 						</div>
-					</div>
-					
-			<h5>New User?</h5>	<a href="signup">Register here</a>
-					
-					
-				</form>
+
+						<div class="form-group row">
+							<label for="confirmPassword" class="col-xs-3 col-form-label mr-5">
+								Password</label>
+							<div class="col-xs-9">
+								<input type="password" class="form-control"
+									placeholder="Enter your password" id="password" name="password"
+									required="true" size="35" />
+							</div>
+						</div>
+
+						<div class="form-group row ">
+							<div class="offset-xs-3 col-xs-9">
+								<button type="submit" class="btn btn-primary">Login</button>
+
+							</div>
+						</div>
+
+						<h5>New User?</h5>
+						<a href="signup">Register here</a>
+
+
+					</form>
+
+				</div>
 
 			</div>
 
 		</div>
-
-	</div>	
 	</center>
-	
-	</br>
 
+	<br />
 
-<%@include file="./shared/footer.jsp"%>
+	<script type="text/javascript">
+		setTimeout(function() {
+			$('#alert').hide('fade');
+
+		}, 3000);
+	</script>
+
+	<%@include file="./shared/footer.jsp"%>

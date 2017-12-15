@@ -1,8 +1,5 @@
 package com.niit.controller;
 
-
-
-
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +35,6 @@ public class CategoryController
 	public String addCategoryOpreation(@ModelAttribute("category") Category category,Model m,HttpSession hs)
 	{
 		categroyDao.addCategory(category);
-		m.addAttribute("status","add");
-		m.addAttribute("taskcomplete", "added");
 		refreshCategorySession(hs,m);
 	return "admincontrol";
 	}
@@ -47,8 +42,6 @@ public class CategoryController
 	public String deleteCategoryOpreation(@PathVariable("id") int id,Model m,HttpSession hs)
 	{
 		categroyDao.deleteCategory(id);
-		m.addAttribute("status","add");
-		m.addAttribute("taskcomplete", "deleted");
 		refreshCategorySession(hs,m);
 	return "admincontrol";
 	}
@@ -59,8 +52,6 @@ public String updateCategoryOperation(@PathVariable("id") int id,Model m,HttpSes
 {
 	refreshCategorySession(hs,m);
 	Category category=categroyDao.getCategoryById(id);
-	m.addAttribute("category", category);
-	m.addAttribute("status", "update");
 	return "admincontrol";
 }
 
@@ -68,8 +59,6 @@ public String updateCategoryOperation(@PathVariable("id") int id,Model m,HttpSes
 	public String updateCategoryData(@ModelAttribute("category") Category category,Model m,HttpSession hs)
 	{
 		categroyDao.updateCategory(category);
-		m.addAttribute("status","add");
-		m.addAttribute("taskcomplete", "updated");
 		refreshCategorySession(hs,m);
 		return "admincontrol";
 	}

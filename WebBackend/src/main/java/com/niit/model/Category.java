@@ -17,16 +17,13 @@ public class Category {
 	private int id;
 	private String name;
 	private String description;
-//	 @OneToMany(mappedBy="category")
-//	private List<Product> product;
-	
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	
 	
 	public String getName() {
 		return name;
@@ -40,13 +37,5 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-//	public List<Product> getProduct() {
-//		return product;
-//	}
-//	public void setProduct(List<Product> product) {
-//		this.product = product;
-//	}
-	
 
-	
 }

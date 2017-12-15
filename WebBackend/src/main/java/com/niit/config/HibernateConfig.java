@@ -13,19 +13,19 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration 
+@Configuration
 @ComponentScan(basePackages = { "com.niit.*" })
 @EnableTransactionManagement
 public class HibernateConfig {
 
 	@Bean
 	public SessionFactory getSessionFactory(DataSource dataSource) {
-		LocalSessionFactoryBuilder builder=new LocalSessionFactoryBuilder(dataSource);
+		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
 		builder.addProperties(hibernateProperties());
 		builder.scanPackages("com.niit.*");
 		return builder.buildSessionFactory();
 	}
-	
+
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
@@ -38,15 +38,12 @@ public class HibernateConfig {
 	@Bean("dataSource")
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		// DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
 		dataSource.setUrl("jdbc:h2:tcp://localhost/~/shopping");
 		dataSource.setUsername("shopping");
 		dataSource.setPassword("shopping");
 		return dataSource;
 	}
-
-	
 
 	@Bean
 	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {

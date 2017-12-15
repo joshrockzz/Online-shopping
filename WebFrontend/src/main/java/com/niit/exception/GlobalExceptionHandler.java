@@ -9,17 +9,17 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(NoHandlerFoundException.class)
-	public ModelAndView globalExceptionHandler(){
-		
-		ModelAndView mv=new ModelAndView("error");
-		
+	public ModelAndView globalExceptionHandler() {
+
+		ModelAndView mv = new ModelAndView("error");
+
 		mv.addObject("errorTitle", "The page is not constructed!");
-		
+
 		mv.addObject("errorDescription", "The page that you are looking is not available!");
-		
+
 		mv.addObject("title", "404 Error Page");
-		
+
 		return mv;
 	}
-	
+
 }

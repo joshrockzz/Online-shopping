@@ -1,16 +1,12 @@
 <%@include file="./shared/navigation.jsp"%>
 
-
-
-
 <div class="container">
 
 	<div class="row">
 
-
 		<div id="myCarousel"
 			class="carousel slide bg-inverse  w-100 ml-auto mr-auto"
-			data-ride="carousel">
+			data-ride="carousel" style="height: 5%;">
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>
@@ -77,7 +73,8 @@
 						src="${images}/products/6.jpg" alt=""></a>
 					<div class="card-body">
 						<h4 class="card-title">
-							<a href="${contextRoot}/singleproduct${6}">Dell Inspiron Core i3 6th Gen</a>
+							<a href="${contextRoot}/singleproduct${6}">Dell Inspiron Core
+								i3 6th Gen</a>
 						</h4>
 						<h5>
 							<i class="fa fa-inr" aria-hidden="true"></i> 60000
@@ -105,9 +102,11 @@
 						<h5>
 							<i class="fa fa-inr" aria-hidden="true"></i> 3000
 						</h5>
-						<p class="card-text">Design: Over the Head <br/> Type: Stereo <br/>
-							Compatible With: Mobile Headphone Jack: 3.5 Over the Ear Wired
-							Connectivity 24 ohm Impedance</p>
+						<p class="card-text">
+							Design: Over the Head <br /> Type: Stereo <br /> Compatible With:
+							Mobile Headphone Jack: 3.5 Over the Ear Wired Connectivity 24 ohm
+							Impedance
+						</p>
 					</div>
 					<div class="card-footer">
 						<small class="text-muted">&#9733; &#9733; &#9733; &#9733;
@@ -120,11 +119,9 @@
 		</div>
 		<!-- /.row -->
 
-	</div>
-	<!-- /.col-lg-9 -->
 
-</div>
-<!-- /.row -->
+	</div>
+	<!-- /.row -->
 
 </div>
 <!-- /.container -->

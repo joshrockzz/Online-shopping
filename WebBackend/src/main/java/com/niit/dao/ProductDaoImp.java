@@ -9,58 +9,54 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.model.Product;
+
 @Repository("productDao")
 @Transactional
-public class ProductDaoImp  implements ProductDao{
+public class ProductDaoImp implements ProductDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
 	public void addProduct(Product product) {
-		
+
 		sessionFactory.getCurrentSession().save(product);
 	}
 
 	@Override
 	public List<Product> listProduct() {
-		
-		return(List<Product>)sessionFactory.getCurrentSession().createCriteria(Product.class).list();
+
+		return (List<Product>) sessionFactory.getCurrentSession().createCriteria(Product.class).list();
 	}
 
 	@Override
 	public Product getProductById(int id) {
-		
+
 		return sessionFactory.getCurrentSession().get(Product.class, id);
 	}
 
 	@Override
 	public void deleteProduct(int id) {
-		
-		Query query=sessionFactory.getCurrentSession().createQuery("delete from Product where id = :id");
+
+		Query query = sessionFactory.getCurrentSession().createQuery("delete from Product where id = :id");
 		query.setInteger("id", id);
-        query.executeUpdate();
-		
+		query.executeUpdate();
+
 	}
 
 	@Override
 	public void updateProduct(Product product) {
-		
+
 		sessionFactory.getCurrentSession().update(product);
-		
+
 	}
 
 	@Override
 	public List<Product> listProductByCategory(int id) {
-		Query query=sessionFactory.getCurrentSession().createQuery("from Product where categoryId= :catid");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Product where categoryId= :catid");
 		query.setInteger("catid", id);
-		List<Product> list=query.list();
+		List<Product> list = query.list();
 		return list;
-		
+
 	}
 
-	
-
-	
-
-	
 }

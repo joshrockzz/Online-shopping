@@ -15,34 +15,30 @@ public class SignupController {
 
 	@Autowired
 	RegistrationFormDao registrationFormDao;
-	
-	@RequestMapping(value="/signup")
-	public String formpage(Model m)
-	{
+
+	@RequestMapping(value = "/signup")
+	public String formpage(Model m) {
 		m.addAttribute("registrationForm", new RegistrationForm());
 		return "signup";
 	}
-	
-	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String registerOperation(@ModelAttribute("registrationForm") RegistrationForm registrationForm,Model m)
-	{
-		if ((registrationForm.getPassword()).equals(registrationForm.getConfirmPassword()))
-		{		
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String registerOperation(@ModelAttribute("registrationForm") RegistrationForm registrationForm, Model m) {
+		if ((registrationForm.getPassword()).equals(registrationForm.getConfirmPassword())) {
 			registrationForm.setRole("USER");
 			registrationForm.setEnabled("TRUE");
 			registrationFormDao.createUser(registrationForm);
 			m.addAttribute("registrationForm", new RegistrationForm());
 			m.addAttribute(registrationForm.getName());
+			m.addAttribute("success", "You have sucessfully register,kindly try your credential");
 			return "login";
-		}
-		else
-		{
+		} else {
 			m.addAttribute("match", "noperfectmatch");
 			m.addAttribute("registrationForm", new RegistrationForm());
 			return "signup";
-			
+
 		}
-		
+
 	}
-	
+
 }

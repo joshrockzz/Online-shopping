@@ -27,7 +27,6 @@ import com.niit.model.Category;
 import com.niit.model.Product;
 import com.niit.model.Supplier;
 
-
 @Controller
 public class HomeController {
 
@@ -39,22 +38,19 @@ public class HomeController {
 
 	@Autowired
 	private SupplierDao supplierDao;
-	
-	
-	
-	public void sessionInitialization(HttpSession hs)
-	{
-		 List<Category> categorylist=categoryDao.listCategory();
-		 hs.setAttribute("categoryList", categorylist);
-		 List<Supplier> supplierlist=supplierDao.listSupplier();
-		 hs.setAttribute("supplierList", supplierlist);
-		 List<Product> productlist=productDao.listProduct();
-		 hs.setAttribute("productList", productlist);
+
+	public void sessionInitialization(HttpSession hs) {
+		List<Category> categorylist = categoryDao.listCategory();
+		hs.setAttribute("categoryList", categorylist);
+		List<Supplier> supplierlist = supplierDao.listSupplier();
+		hs.setAttribute("supplierList", supplierlist);
+		List<Product> productlist = productDao.listProduct();
+		hs.setAttribute("productList", productlist);
 	}
 
-	@RequestMapping(value = { "/", "/home"})
+	@RequestMapping(value = { "/", "/home" })
 	public ModelAndView home(HttpSession hs) {
-		ModelAndView mv=new ModelAndView("home");
+		ModelAndView mv = new ModelAndView("home");
 		sessionInitialization(hs);
 		mv.addObject("title", "Home");
 		return mv;
@@ -68,23 +64,16 @@ public class HomeController {
 		mv.addObject("title", "All Products");
 		mv.addObject("userClickAllProducts", true);
 		/* passing list of categoey */
-		
 		mv.addObject("productList", productDao.listProduct());
-
 		return mv;
-
 	}
 
 	@RequestMapping(value = { "/categoryproduct{id}" })
 	public ModelAndView showCategoryProducts(@PathVariable("id") int id) {
 		ModelAndView mv = new ModelAndView("listproducts");
-
 		/* categoryDao to fetch a single category */
-
-		Category category =  categoryDao.getCategoryById(id);
-
+		Category category = categoryDao.getCategoryById(id);
 		mv.addObject("title", category.getName());
-
 		/* passing the single category object */
 		mv.addObject("category", category);
 		mv.addObject("userClickCategoryProducts", true);
@@ -93,42 +82,38 @@ public class HomeController {
 		mv.addObject("productList", productDao.listProductByCategory(id));
 		return mv;
 	}
-	
-	@RequestMapping(value={"/admincontrol"})
+
+	@RequestMapping(value = { "/admincontrol" })
 	public ModelAndView adminControl() {
 		ModelAndView mv = new ModelAndView("admincontrol");
 		mv.addObject("title", "Admin Control");
-		mv.addObject("category",new Category());
+		mv.addObject("category", new Category());
 		mv.addObject("supplier", new Supplier());
 		mv.addObject("product", new Product());
 		return mv;
 	}
-	
+
 	@RequestMapping(value = { "/login" })
-	public ModelAndView login(@RequestParam(name="error",required=false) String error) {
+	public ModelAndView login(@RequestParam(name = "error", required = false) String error) {
 		ModelAndView mv = new ModelAndView("login");
-		if(error!=null)
-		{
+		if (error != null) {
 			mv.addObject("message", "Invalid Username or password,please try again");
 		}
 		mv.addObject("title", "Login");
 		return mv;
 	}
-	
 
-		@RequestMapping(value = { "/logout" })
-		public String logOutOpreation(HttpServletRequest request,HttpServletResponse response) {
-			
-			Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
-			
-			if(authentication!=null){
-				
-				new SecurityContextLogoutHandler().logout(request, response, authentication);
-			}
-		
-			return "redirect:/home";
-			
-		
-	
-}
+	@RequestMapping(value = { "/logout" })
+	public String logOutOpreation(HttpServletRequest request, HttpServletResponse response, Model m) {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		if (authentication != null) {
+
+			new SecurityContextLogoutHandler().logout(request, response, authentication);
+		}
+
+		return "redirect:/home";
+
+	}
 }

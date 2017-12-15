@@ -13,10 +13,11 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartResolver;
+
 @Entity
 public class Product {
-@Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String brand;
@@ -25,94 +26,80 @@ public class Product {
 	private int stock;
 	private int categoryId;
 	private int supplierId;
-	
-	
+
 	@Transient
-private MultipartFile mimage;
-	
-	
-	
-	
+	private MultipartFile mimage;
+
 	public int getCategoryId() {
 		return categoryId;
 	}
+
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
+
 	public int getSupplierId() {
 		return supplierId;
 	}
+
 	public void setSupplierId(int supplierId) {
 		this.supplierId = supplierId;
 	}
+
 	public MultipartFile getMimage() {
 		return mimage;
 	}
+
 	public void setMimage(MultipartFile mimage) {
 		this.mimage = mimage;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getBrand() {
 		return brand;
 	}
+
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public Double getPrice() {
 		return price;
 	}
+
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
 	public int getStock() {
 		return stock;
 	}
+
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", brand=" + brand + ", description=" + description + ", price="
-				+ price + ", stock=" + stock + "]";
-	}
-	
 
-
-	
-		
-	
-	
-//	@ManyToOne
-//	@JoinColumn(name="category_id")
-//	private Category category;
-	
-//	public Product(){
-//		
-//		this.code= "PRD" + UUID.randomUUID().toString().substring(20).toUpperCase();
-//	}
-//	
-//	
-	
-	
-
-	
-	}
-	
-	
+}

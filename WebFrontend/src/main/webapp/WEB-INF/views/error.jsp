@@ -53,7 +53,7 @@
 			<div class="jumbotron">
 
 				<h1 class="text-center">${errorTitle}</h1>
-				<hr/>
+				<hr />
 
 				<blockquote>${errorDescription}</blockquote>
 

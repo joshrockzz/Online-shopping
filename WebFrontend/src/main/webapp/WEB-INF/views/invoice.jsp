@@ -8,10 +8,11 @@
 		<h1>Order Details</h1>
 	</div>
 	<div class="row">
-	<div class='form-row'>
-	&emsp;<label class='control-label'>Date: </label>&nbsp;<p id=demo></p>
-	
-	</div>
+		<div class='form-row'>
+			&emsp;<label class='control-label'>Date: </label>&nbsp;
+			<p id=demo></p>
+
+		</div>
 	</div>
 	<div class="row">
 		<div class='form-row'>
@@ -51,14 +52,15 @@
 		<h2>Thank you for shopping with us!</h2>
 	</div>
 	<div class="row">
-		<br> <a class="btn btn-success  btn-md" href="allproduct"> Continue Shopping</a>
-		&nbsp;&nbsp; <a class="btn btn-primary  btn-md" href="home">Home</a>
+		<br> <a class="btn btn-success  btn-md" href="allproduct">
+			Continue Shopping</a> &nbsp;&nbsp; <a class="btn btn-primary  btn-md"
+			href="home">Home</a>
 
 	</div>
 </div>
 <br />
 
 <script>
-document.getElementById("demo").innerHTML = Date();
+	document.getElementById("demo").innerHTML = Date();
 </script>
 <%@include file="./shared/footer.jsp"%>

@@ -9,52 +9,62 @@ import javax.persistence.Transient;
 
 @Entity
 public class Cart {
-@Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
-int cartItemId;
-@Transient
-int orderId;
-int quantity;
-double price;
-int productId;
-String username;
-public int getCartItemId() {
-	return cartItemId;
-}
-public void setCartItemId(int cartItemId) {
-	this.cartItemId = cartItemId;
-}
-public int getOrderId() {
-	return orderId;
-}
-public void setOrderId(int orderId) {
-	this.orderId = orderId;
-}
-public int getQuantity() {
-	return quantity;
-}
-public void setQuantity(int quantity) {
-	this.quantity = quantity;
-}
-public double getPrice() {
-	return price;
-}
-public void setPrice(double price) {
-	this.price = price;
-}
-public int getProductId() {
-	return productId;
-}
-public void setProductId(int productId) {
-	this.productId = productId;
-}
-public String getUsername() {
-	return username;
-}
-public void setUsername(String username) {
-	this.username = username;
-}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int cartItemId;
+	@Transient
+	int orderId;
+	int quantity;
+	double price;
+	int productId;
+	String username;
 
+	public int getCartItemId() {
+		return cartItemId;
+	}
 
-	
+	public void setCartItemId(int cartItemId) {
+		this.cartItemId = cartItemId;
+	}
+
+	public int getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 }

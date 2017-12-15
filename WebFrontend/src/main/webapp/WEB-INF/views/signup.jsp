@@ -1,22 +1,24 @@
-<%@include file="./shared/navigation.jsp" %>
+<%@include file="./shared/navigation.jsp"%>
 
 
-	<!-- Regitration Form -->
-	<br />
-	<div class="container">
+<!-- Regitration Form -->
+<br />
+<div class="container">
 	<center>
-	<c:if test="${match.equals('noperfectmatch')}">
-	<div class="col-md-offset-3 col-md-6">
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-	 <span aria-hidden="true">&times;</span>
-  </button>
-	<strong>Password and Confirm password does not match</strong>
-	</div>
-	</div>
-</c:if>
-	
-	
+		<c:if test="${match.equals('noperfectmatch')}">
+			<div class="col-md-offset-3 col-md-6">
+				<div class="alert alert-warning alert-dismissible fade show"
+					role="alert" id="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<strong>Password and Confirm password does not match</strong>
+				</div>
+			</div>
+		</c:if>
+
+
 		<div class="card w-50">
 			<h3 class="card-header">Sign Up here</h3>
 			<div class="card-body">
@@ -76,27 +78,35 @@
 								path="confirmPassword" required="true" size="35" />
 						</div>
 					</div>
-					
+
 					<div class="form-group row ">
 						<div class="offset-xs-3 col-xs-9">
-							<button type="submit" class="btn btn-primary " formaction="register">Register</button>
-								
+							<button type="submit" class="btn btn-primary "
+								formaction="register">Register</button>
+
 						</div>
 					</div>
-					
-			<h5>Already a user?</h5>	<a href="login">Click here</a>
-					
-					
+
+					<h5>Already a user?</h5>
+					<a href="login">Click here</a>
+
+
 				</form:form>
 
 			</div>
 
 		</div>
+</div>
+</center>
+</div>
+<br />
 
-		</div>
-	</center>
-	</div>
-	</br>
+<script type="text/javascript">
+	setTimeout(function() {
+		$('#alert').hide('fade');
+
+	}, 3000);
+</script>
 
 
-	<%@include file="./shared/footer.jsp"%>
+<%@include file="./shared/footer.jsp"%>

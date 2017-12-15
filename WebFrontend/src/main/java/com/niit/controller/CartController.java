@@ -28,44 +28,38 @@ public class CartController {
 	CartDao cartDao;
 	@Autowired
 	ProductDao productDao;
-	
-	public void cartinitialize(Model m)
-	{
+
+	public void cartinitialize(Model m) {
 		SecurityContextHolder.getContext().getAuthentication();
-		User user=(User) session.getAttribute("usermodel"); 
-		List<Cart> list=cartDao.retrieveCart(user.getEmail());
+		User user = (User) session.getAttribute("usermodel");
+		List<Cart> list = cartDao.retrieveCart(user.getEmail());
 		m.addAttribute("usercartlist", list);
 	}
-	
-	@RequestMapping(value="/cartpage")
-	public String cartoperation(Model m)
-	{
+
+	@RequestMapping(value = "/cartpage")
+	public String cartoperation(Model m) {
 		cartinitialize(m);
 		return "cart";
 	}
-	
-	@RequestMapping(value="/cartadd{id}")
-	public String cartadd(@PathVariable("id")int id,Model m,HttpServletRequest request)
-	{
-		User user=(User) session.getAttribute("usermodel");
-		Product product=productDao.getProductById(id);
-		
-		int quantity=Integer.parseInt(request.getParameter("quant"));
+
+	@RequestMapping(value = "/cartadd{id}")
+	public String cartadd(@PathVariable("id") int id, Model m, HttpServletRequest request) {
+		User user = (User) session.getAttribute("usermodel");
+		Product product = productDao.getProductById(id);
+
+		int quantity = Integer.parseInt(request.getParameter("quant"));
 		System.out.println(quantity);
-		Cart cartexist=cartDao.getCartExistItem(product.getId(), user.getEmail());
-		
-		if(cartexist==null)
-		{
-		Cart cart=new Cart();
-		cart.setProductId(product.getId());
-		cart.setPrice(product.getPrice());
-		cart.setUsername(user.getEmail());
-		cart.setQuantity(quantity);
-		cartDao.addCart(cart);
-		}
-		else if(cartexist!=null)
-		{
-			Cart cart=new Cart();
+		Cart cartexist = cartDao.getCartExistItem(product.getId(), user.getEmail());
+
+		if (cartexist == null) {
+			Cart cart = new Cart();
+			cart.setProductId(product.getId());
+			cart.setPrice(product.getPrice());
+			cart.setUsername(user.getEmail());
+			cart.setQuantity(quantity);
+			cartDao.addCart(cart);
+		} else if (cartexist != null) {
+			Cart cart = new Cart();
 			cart.setCartItemId(cartexist.getCartItemId());
 			cart.setProductId(product.getId());
 			cart.setPrice(product.getPrice());
@@ -76,36 +70,29 @@ public class CartController {
 		cartinitialize(m);
 		return "cart";
 	}
-	
-	@RequestMapping(value="/cartremove{cartItemId}")
-	public String cartdelete(@PathVariable("cartItemId")int cartItemId,Model m,HttpServletRequest request)
-	{
-		User user=(User) session.getAttribute("usermodel");
+
+	@RequestMapping(value = "/cartremove{cartItemId}")
+	public String cartdelete(@PathVariable("cartItemId") int cartItemId, Model m, HttpServletRequest request) {
+		User user = (User) session.getAttribute("usermodel");
 		cartDao.deleteCart(cartItemId);
 		cartinitialize(m);
 		return "cart";
 	}
-	
-	
-	@RequestMapping(value="/checkout")
-	public String checkout(HttpServletRequest request,Model m)
-	{	
-		String total=request.getParameter("total");
+
+	@RequestMapping(value = "/checkout")
+	public String checkout(HttpServletRequest request, Model m) {
+		String total = request.getParameter("total");
 		m.addAttribute("total", total);
 		return "checkout";
 	}
-	
-	@RequestMapping(value="/invoice")
-	public String invoice(HttpServletRequest request,Model m)
-	{
-		User user=(User) session.getAttribute("usermodel");
+
+	@RequestMapping(value = "/invoice")
+	public String invoice(HttpServletRequest request, Model m) {
+		User user = (User) session.getAttribute("usermodel");
 		cartDao.deleteUserCart(user.getEmail());
-		String total=request.getParameter("total");
+		String total = request.getParameter("total");
 		m.addAttribute("total", total);
 		return "invoice";
 	}
-	
-	
-	
-	
+
 }

@@ -66,7 +66,7 @@ public class CartDaoImp implements CartDao {
 		Query query = sessionFactory.getCurrentSession().createQuery("delete from Cart where username= :user");
 		query.setString("user", user);
 		query.executeUpdate();
-		
+
 	}
 
 }
