@@ -45,7 +45,7 @@ public class ProductController {
 	{
 		MultipartFile file=product.getMimage();
 		productDao.addProduct(product);
-		String path = "E:\\Rahul\\TestEclipse\\WebFrontend\\src\\main\\webapp\\assets\\images\\products\\"+product.getId()+".jpg";
+		String path = "E:\\Rahul\\Eclipse project\\WebFrontend\\src\\main\\webapp\\assets\\images\\products\\"+product.getId()+".jpg";
 		
 		File fileupload= new File(path);
 		

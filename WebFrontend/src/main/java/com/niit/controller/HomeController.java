@@ -115,10 +115,6 @@ public class HomeController {
 		return mv;
 	}
 	
-	
-	
-	
-		
 
 		@RequestMapping(value = { "/logout" })
 		public String logOutOpreation(HttpServletRequest request,HttpServletResponse response) {
@@ -128,9 +124,8 @@ public class HomeController {
 			if(authentication!=null){
 				
 				new SecurityContextLogoutHandler().logout(request, response, authentication);
-				
 			}
-			
+		
 			return "redirect:/home";
 			
 		

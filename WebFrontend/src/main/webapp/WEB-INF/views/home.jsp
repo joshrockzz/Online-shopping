@@ -19,15 +19,15 @@
 			<div class="carousel-inner" role="listbox">
 				<div class="carousel-item active">
 					<img class="d-block w-100" src="${images}/download.jpg"
-						alt="First slide" style="height: 5%;">
+						alt="First slide">
 				</div>
 				<div class="carousel-item">
 					<img class="d-block w-100" src="${images}/laptop2.jpg"
-						alt="Second slide" style="height: 5%;">
+						alt="Second slide">
 				</div>
 				<div class="carousel-item">
 					<img class="d-block w-100" src="${images}/Laptop.jpg"
-						alt="Third slide" style="height: 5%;">
+						alt="Third slide">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#myCarousel" role="button"
@@ -52,7 +52,7 @@
 						src="${images}/products/5.jpg" alt=""></a>
 					<div class="card-body">
 						<h4 class="card-title">
-							<a href="#">Sony Bravia</a>
+							<a href="${contextRoot}/singleproduct${5}">Sony Bravia</a>
 						</h4>
 						<h5>
 							<i class="fa fa-inr" aria-hidden="true"></i> 55000
@@ -77,7 +77,7 @@
 						src="${images}/products/6.jpg" alt=""></a>
 					<div class="card-body">
 						<h4 class="card-title">
-							<a href="#">Dell Inspiron Core i3 6th Gen</a>
+							<a href="${contextRoot}/singleproduct${6}">Dell Inspiron Core i3 6th Gen</a>
 						</h4>
 						<h5>
 							<i class="fa fa-inr" aria-hidden="true"></i> 60000
@@ -100,7 +100,7 @@
 						src="${images}/products/7.jpg" alt=""></a>
 					<div class="card-body">
 						<h4 class="card-title">
-							<a href="#">Skullcandy S5LHZ</a>
+							<a href="${contextRoot}/singleproduct${7}">Skullcandy S5LHZ</a>
 						</h4>
 						<h5>
 							<i class="fa fa-inr" aria-hidden="true"></i> 3000

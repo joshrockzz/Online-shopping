@@ -82,7 +82,7 @@ Categories
 </div>
 
 <ul class=" nav navbar-nav navbar-right">
-<security:authorize access="isAnonymous()">
+<security:authorize access="r">
 <li class="nav-item" id="signin">
 <a class="nav-link" href="${contextRoot}/login">SignIn</a>
 </li>

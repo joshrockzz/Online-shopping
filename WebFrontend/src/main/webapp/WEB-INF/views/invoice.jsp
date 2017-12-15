@@ -51,8 +51,7 @@
 		<h2>Thank you for shopping with us!</h2>
 	</div>
 	<div class="row">
-		<br> <a class="btn btn-success  btn-md" href="allproduct"><span
-			class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
+		<br> <a class="btn btn-success  btn-md" href="allproduct"> Continue Shopping</a>
 		&nbsp;&nbsp; <a class="btn btn-primary  btn-md" href="home">Home</a>
 
 	</div>

@@ -97,6 +97,7 @@
 					
 					</c:otherwise>
 					
+					
 					</c:choose>
 					
 					<a href="${contextRoot}/allproduct" class="btn btn-primary">

@@ -64,17 +64,46 @@
 										<td>${list.stock}</td>
 									</c:otherwise>
 								</c:choose>
-								<td>
-									<form action="cartadd${list.id}">
-										<input type="number" name=quant value="1" size="2"
-											style="width: 40px;" />
-								</td>
 
-								<td><button type="submit" class="btn btn-primary">Add
-										Cart</button>
-									</form> <a href="${contextRoot}/singleproduct${list.id}"><button
-											type="button" class="btn btn-primary">View</button></a></td>
+								<security:authorize access="hasAuthority('USER')">
+									<td>
+										<form action="cartadd${list.id}">
+											<input type="number" name=quant value="1" size="2"
+												style="width: 40px;" />
+									</td>
+
+									<td><button type="submit" class="btn btn-primary">Add
+											Cart</button>
+										</form> <a href="${contextRoot}/singleproduct${list.id}"><button
+												type="button" class="btn btn-primary">View</button></a></td>
 							</tr>
+							</security:authorize>
+							
+							
+							<security:authorize access="isAnonymous()">
+									<td>
+										<form action="cartadd${list.id}">
+											<input type="number" name=quant value="1" size="2"
+												style="width: 40px;" />
+									</td>
+
+									<td><button type="submit" class="btn btn-primary">Add
+											Cart</button>
+										</form> <a href="${contextRoot}/singleproduct${list.id}"><button
+												type="button" class="btn btn-primary">View</button></a></td>
+							</tr>
+							</security:authorize>
+							
+							<security:authorize access="hasAuthority('ADMIN')">
+									
+									<td><a  class="btn btn-primary" href='<c:url value="updateproduct${list.id}"/>'>Edit
+											</a>
+										 <a href='<c:url value="deleteproduct${list.id}"/>'><button
+												type="button" class="btn btn-primary">Delete</button></a></td>
+							</tr>
+							</security:authorize>
+							
+
 						</tbody>
 					</c:forEach>
 				</table>
