@@ -1,6 +1,7 @@
 
 <%@include file="./shared/navigation.jsp"%>
 
+<br/>
 <div class="container-fluid">
 
 	<ul id="admincontrol" class="nav nav-tabs" role="tablist">
@@ -342,4 +343,7 @@
 	</div>
 </div>
 
+
+
 <%@include file="./shared/footer.jsp"%>
+

@@ -6,7 +6,7 @@
 
 		<div id="myCarousel"
 			class="carousel slide bg-inverse  w-100 ml-auto mr-auto"
-			data-ride="carousel" style="height: 5%;">
+			data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>
@@ -14,16 +14,19 @@
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="carousel-item active">
-					<img class="d-block w-100" src="${images}/download.jpg"
-						alt="First slide">
+				<a href="${contextRoot}/singleproduct${16}">
+					<img class="d-block w-100" src="${images}/corosul2.jpg"
+						alt="First slide"></a>
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="${images}/laptop2.jpg"
-						alt="Second slide">
+				<a href="${contextRoot}/categoryproduct${3}">
+					<img class="d-block w-100" src="${images}/corosul1.jpg"
+						alt="Second slide"></a>
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="${images}/Laptop.jpg"
-						alt="Third slide">
+				<a href="${contextRoot}/singleproduct${1}">
+					<img class="d-block w-100" src="${images}/corosul3.jpg"
+						alt="Third slide"></a>
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#myCarousel" role="button"
@@ -44,11 +47,11 @@
 
 			<div class="col-lg-4 col-md-6 mb-4">
 				<div class="card h-100">
-					<a href="#"><img class="card-img-top"
-						src="${images}/products/5.jpg" alt=""></a>
+					<a href="${contextRoot}/singleproduct${17}"><img class="card-img-top"
+						src="${images}/products/17.jpg" alt=""></a>
 					<div class="card-body">
 						<h4 class="card-title">
-							<a href="${contextRoot}/singleproduct${5}">Sony Bravia</a>
+							<a href="${contextRoot}/singleproduct${17}">Sony Bravia</a>
 						</h4>
 						<h5>
 							<i class="fa fa-inr" aria-hidden="true"></i> 55000
@@ -69,7 +72,7 @@
 
 			<div class="col-lg-4 col-md-6 mb-4">
 				<div class="card h-100">
-					<a href="#"><img class="card-img-top"
+					<a href="${contextRoot}/singleproduct${6}"><img class="card-img-top"
 						src="${images}/products/6.jpg" alt=""></a>
 					<div class="card-body">
 						<h4 class="card-title">
@@ -93,11 +96,11 @@
 
 			<div class="col-lg-4 col-md-6 mb-4">
 				<div class="card h-100">
-					<a href="#"><img class="card-img-top"
-						src="${images}/products/7.jpg" alt=""></a>
+					<a href="${contextRoot}/singleproduct${18}"><img class="card-img-top"
+						src="${images}/products/18.jpg" alt=""></a>
 					<div class="card-body">
 						<h4 class="card-title">
-							<a href="${contextRoot}/singleproduct${7}">Skullcandy S5LHZ</a>
+							<a href="${contextRoot}/singleproduct${18}">Skullcandy S5LHZ</a>
 						</h4>
 						<h5>
 							<i class="fa fa-inr" aria-hidden="true"></i> 3000
@@ -125,6 +128,5 @@
 
 </div>
 <!-- /.container -->
-
 
 <%@include file="./shared/footer.jsp"%>

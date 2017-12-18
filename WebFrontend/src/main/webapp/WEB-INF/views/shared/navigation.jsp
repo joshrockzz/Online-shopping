@@ -23,6 +23,7 @@
 <link href="${css}/custom-bootstrap.css" rel="stylesheet">
 <link href="${css}/bootstrap-theme.css" rel="stylesheet">
 
+
 <!-- Bootstrap CDN -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
@@ -59,7 +60,7 @@ body {
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<!-- Brand --> <a class="navbar-brand" href="${contextRoot}/home">DMART</a>
+		<!-- Brand --> <a class="navbar-brand" href="${contextRoot}/home"><img src="${images}/logo1.png" width="50" height="30" class="d-inline-block align-top" alt=""> DMART</a>
 
 		<!-- Links -->
 		<div class="collapse navbar-collapse" id="nav-content">

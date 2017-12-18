@@ -3,7 +3,6 @@
 	<footer class="py-5 bg-dark">
 		<div class="container">
 			<p class=" text-white">Contact Us:</p>
-			<br />
 			<p class=" text-white">Address:Anjaneya Cooperative Housing
 				Society Ltd, Opposite Hiranandani Foundation School, Orchard Avenue,
 				Powai, Mumbai, Maharashtra - 400076.</p>
