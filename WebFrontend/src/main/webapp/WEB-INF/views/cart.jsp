@@ -1,4 +1,4 @@
-<%@include file="./shared/navigation.jsp"%>
+
 <br />
 <div class="container">
 	<c:choose>
@@ -110,4 +110,3 @@
 	</c:choose>
 </div>
 <br />
-<%@include file="./shared/footer.jsp"%>

@@ -37,13 +37,17 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/cartpage")
-	public String cartoperation(Model m) {
+	public ModelAndView cartoperation(Model m) {
+		ModelAndView mv=new ModelAndView("index");
 		cartinitialize(m);
-		return "cart";
+		mv.addObject("title", "Cart");
+		mv.addObject("userClickCart", true);
+		return mv;
 	}
 
 	@RequestMapping(value = "/cartadd{id}")
 	public String cartadd(@PathVariable("id") int id, Model m, HttpServletRequest request) {
+		
 		User user = (User) session.getAttribute("usermodel");
 		Product product = productDao.getProductById(id);
 
@@ -68,7 +72,7 @@ public class CartController {
 			cartDao.updateCart(cart);
 		}
 		cartinitialize(m);
-		return "cart";
+		return "redirect:cartpage";
 	}
 
 	@RequestMapping(value = "/cartremove{cartItemId}")
@@ -76,23 +80,30 @@ public class CartController {
 		User user = (User) session.getAttribute("usermodel");
 		cartDao.deleteCart(cartItemId);
 		cartinitialize(m);
-		return "cart";
+		return "redirect:cartpage";
 	}
 
 	@RequestMapping(value = "/checkout")
-	public String checkout(HttpServletRequest request, Model m) {
+	public ModelAndView checkout(HttpServletRequest request, Model m) {
+		ModelAndView mv=new ModelAndView("index");
 		String total = request.getParameter("total");
 		m.addAttribute("total", total);
-		return "checkout";
+		mv.addObject("userClickCheckout", true);
+		mv.addObject("title", "Checkout");
+		return mv;
 	}
 
 	@RequestMapping(value = "/invoice")
-	public String invoice(HttpServletRequest request, Model m) {
+	public ModelAndView invoice(HttpServletRequest request, Model m) {
+		ModelAndView mv=new ModelAndView("index");
 		User user = (User) session.getAttribute("usermodel");
-		cartDao.deleteUserCart(user.getEmail());
+		cartinitialize(m);
 		String total = request.getParameter("total");
 		m.addAttribute("total", total);
-		return "invoice";
+		mv.addObject("userClickInvoice", true);
+		mv.addObject("title", "Invoice");
+		cartDao.deleteUserCart(user.getEmail());
+		return mv;
 	}
 
 }

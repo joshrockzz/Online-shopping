@@ -23,6 +23,11 @@
 <link href="${css}/custom-bootstrap.css" rel="stylesheet">
 <link href="${css}/bootstrap-theme.css" rel="stylesheet">
 
+<style type="text/css">
+table, th, td {
+    border-spacing:15px;
+    padding: 5px;
+</style>
 
 <!-- Bootstrap CDN -->
 <link rel="stylesheet"
@@ -82,7 +87,12 @@ body {
 					<li class="nav-item" id="admincontrol"><a class="nav-link"
 						href="${contextRoot}/admincontrol">Admin Control</a></li>
 				</security:authorize>
+			 
 			</ul>
+			<form class="form-inline my-2 my-lg-0" action="search">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search products" name="name">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit" formaction="search">Search</button>
+    </form> 
 		</div>
 
 		<ul class=" nav navbar-nav navbar-right">

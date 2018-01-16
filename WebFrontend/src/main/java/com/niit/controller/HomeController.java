@@ -27,6 +27,8 @@ import com.niit.model.Category;
 import com.niit.model.Product;
 import com.niit.model.Supplier;
 
+import antlr.collections.impl.LList;
+
 @Controller
 public class HomeController {
 
@@ -50,8 +52,9 @@ public class HomeController {
 
 	@RequestMapping(value = { "/", "/home" })
 	public ModelAndView home(HttpSession hs) {
-		ModelAndView mv = new ModelAndView("home");
+		ModelAndView mv = new ModelAndView("index");
 		sessionInitialization(hs);
+		mv.addObject("userClickHome", true);
 		mv.addObject("title", "Home");
 		return mv;
 	}
@@ -84,8 +87,9 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = { "/admincontrol" })
-	public ModelAndView adminControl() {
+	public ModelAndView adminControl(HttpSession hs) {
 		ModelAndView mv = new ModelAndView("admincontrol");
+		sessionInitialization(hs);
 		mv.addObject("title", "Admin Control");
 		mv.addObject("category", new Category());
 		mv.addObject("supplier", new Supplier());
@@ -100,6 +104,7 @@ public class HomeController {
 			mv.addObject("message", "Invalid Username or password,please try again");
 		}
 		mv.addObject("title", "Login");
+		
 		return mv;
 	}
 
@@ -116,4 +121,22 @@ public class HomeController {
 		return "redirect:/home";
 
 	}
+	
+	
+	@RequestMapping(value="/search")
+	public ModelAndView search(@RequestParam("name") String name,HttpSession hs)
+	{
+		ModelAndView mv=new ModelAndView("listproducts");
+		sessionInitialization(hs);
+		List<Product> product=productDao.retrieveProductByName(name);
+		if(product.size()==0){
+			mv.addObject("search", true);
+		}
+		else{
+		mv.addObject("productList",productDao.retrieveProductByName(name.toLowerCase()));
+		mv.addObject("userClickSearch", true);
+		}
+		return mv;
+	}
+	
 }

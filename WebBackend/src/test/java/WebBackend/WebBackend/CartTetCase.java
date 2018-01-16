@@ -1,3 +1,4 @@
+
 package WebBackend.WebBackend;
 
 import java.util.List;
@@ -8,7 +9,9 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.dao.CartDao;
+import com.niit.dao.ProductDao;
 import com.niit.model.Cart;
+import com.niit.model.Product;
 
 public class CartTetCase {
 
@@ -16,6 +19,8 @@ public class CartTetCase {
 private static AnnotationConfigApplicationContext context;
 	
 	private static CartDao cartDao;
+	
+	private static ProductDao productDao;
 	
 	private Cart cart;
 	
@@ -26,6 +31,7 @@ private static AnnotationConfigApplicationContext context;
 		context.scan("com.niit.*");
 		context.refresh();
 		cartDao=(CartDao) context.getBean("cartDao");
+		 productDao = (ProductDao) context.getBean("productDao");
 	}
 	
 	/*@Ignore
@@ -60,6 +66,7 @@ private static AnnotationConfigApplicationContext context;
 //		Cart cart=new Cart();
 //		cart.setId(2);
 //		cart.setOrderId(101);
+	
 //		cart.setPrice(100);
 //		cart.setProductId(1);
 //		cart.setQuantity(10);
@@ -85,10 +92,13 @@ private static AnnotationConfigApplicationContext context;
 //			System.out.println(cart.getId());
 //		}
 //	}
+	@Ignore
 	@Test
 	public void deleteUserCart(){
 		Cart cart=new Cart();
 		cart.setUsername("ab@gmail.com");
 		cartDao.deleteUserCart(cart.getUsername());
 	}
+	
+	
 }

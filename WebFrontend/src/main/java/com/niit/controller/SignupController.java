@@ -19,6 +19,7 @@ public class SignupController {
 	@RequestMapping(value = "/signup")
 	public String formpage(Model m) {
 		m.addAttribute("registrationForm", new RegistrationForm());
+		m.addAttribute("title", "Signup");
 		return "signup";
 	}
 

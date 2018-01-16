@@ -52,6 +52,7 @@ public String updateCategoryOperation(@PathVariable("id") int id,Model m,HttpSes
 {
 	refreshCategorySession(hs,m);
 	Category category=categroyDao.getCategoryById(id);
+	m.addAttribute("category", category);
 	return "admincontrol";
 }
 

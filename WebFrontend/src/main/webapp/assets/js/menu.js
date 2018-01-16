@@ -18,4 +18,9 @@ $(function(){
 		$('#a_'+menu).addClass('active');
 		break;
 	}
+	
+	
+	
+	
+	
 });

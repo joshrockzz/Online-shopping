@@ -1,7 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+ 
+	$(document).ready(function(){
+        $(	'a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+            localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+        var activeTab = localStorage.getItem('activeTab');
+        if(activeTab){
+            $('#admincontrol a[href="' + activeTab + '"]').tab('show');
+        }
+    });   
+    </script>
+
+</head>
+<body>
+
+
 
 <%@include file="./shared/navigation.jsp"%>
 
-<br/>
+<br />
 <div class="container-fluid">
 
 	<ul id="admincontrol" class="nav nav-tabs" role="tablist">
@@ -30,51 +54,55 @@
 			aria-labelledby="category-tab">
 
 			<div class="container">
-			
-					<h3>Add Category</h3>
 
-					<form:form modelAttribute="category">
+				<h3>Add Category</h3>
 
-						<form:input type="hidden" class="form-control" id="id" path="id" />
+				<form:form id="categoryForm" modelAttribute="category">
 
+					<form:input type="hidden" class="form-control" id="id" path="id" />
+
+
+
+					<div class="form-group row">
+						<label for="name" class="col-lg-3 col-form-label">Category
+							Name</label>
+						<div class="col-lg-9">
+							<form:input type="text" class="form-control" id="name"
+								path="name" />
+							<sf:errors path="name" cssClass="help-block" element="em" />
+
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="description" class="col-lg-3 col-form-label">Description</label>
+						<div class="col-lg-9">
+							<form:textarea type="text" class="form-control" id="description"
+								rows="3" cols="30" path="description" />
+
+						</div>
+					</div>
+
+
+					<c:if test="${empty category.name}">
 
 						<div class="form-group row">
-							<label for="name" class="col-xs-3 col-form-label mr-2">Category
-								Name</label>
-							<div class="col-xs-9">
-								<form:input type="text" class="form-control" id="name"
-									path="name" required="true" />
+							<div class="offset-lg-3 col-lg-9">
+								<button type="submit" class="btn btn-default"
+									formaction="addcategory">Add Category</button>
 							</div>
 						</div>
+					</c:if>
+
+
+					<c:if test="${!empty category.name}">
 						<div class="form-group row">
-							<label for="description" class="col-xs-3 col-form-label mr-5">Description</label>
-							<div class="col-xs-9">
-								<form:textarea type="text" class="form-control" id="description"
-									rows="3" cols="30" path="description" />
+							<div class="offset-lg-3 col-lg-9">
+								<button type="submit" class="btn btn-default"
+									formaction="updateCategoryData">Update Category</button>
 							</div>
 						</div>
-
-
-						<c:if test="${empty category.name}">
-
-							<div class="form-group row">
-								<div class="offset-xs-3 col-xs-9">
-									<button type="submit" class="btn btn-default"
-										formaction="addcategory">Add Category</button>
-								</div>
-							</div>
-						</c:if>
-
-
-						<c:if test="${!empty category.name}">
-							<div class="form-group row">
-								<div class="offset-xs-3 col-xs-9">
-									<button type="submit" class="btn btn-default"
-										formaction="updateCategoryData">Update Category</button>
-								</div>
-							</div>
-						</c:if>
-					</form:form>
+					</c:if>
+				</form:form>
 			</div>
 
 			<div class="container">
@@ -116,43 +144,54 @@
 			<div class="container">
 
 				<h3>Add Supplier</h3>
-				<form:form modelAttribute="supplier">
+
+				<form:form modelAttribute="supplier" class="form-horizontal">
 
 					<form:input type="hidden" class="form-control" id="id" path="id" />
 
 					<div class="form-group row">
-						<label for="name" class="col-xs-3 col-form-label mr-2">Supplier
+
+						<label for="name" class="col-lg-3 col-form-label">Supplier
 							Name</label>
-						<div class="col-xs-9">
+						<div class="col-lg-9">
 							<form:input type="text" class="form-control" id="name"
 								path="name" required="true" />
+
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="address" class="col-xs-3 col-form-label mr-2">Address</label>
-						<div class="col-xs-9">
+
+						<label for="address" class="col-lg-3 col-form-label">Address</label>
+						<div class="col-lg-9">
 							<form:textarea type="text" class="form-control" id="address"
 								rows="3" path="address" cols="30" />
+
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="contact_no" class="col-xs-3 col-form-label mr-2">Contact
+
+						<label for="contact_no" class="col-lg-3 col-form-label">Contact
 							no.</label>
-						<div class="col-xs-9">
+						<div class="col-lg-9">
 							<form:input type="text" class="form-control" id="contact_no"
-								path="contact_no" maxlength="10" required="true" />
+								path="contact_no" minlength="10" maxlength="10" required="true" pattern="^\d{10}$"
+								title="Enter valid contact no" />
+
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="email" class="col-xs-3 col-form-label mr-2">Email</label>
-						<div class="col-xs-9">
+
+						<label for="email" class="col-lg-3 col-form-label">Email</label>
+						<div class="col-lg-9">
 							<form:input type="email" class="form-control" id="email"
 								path="email" required="true" />
+
 						</div>
 					</div>
+
 					<c:if test="${empty supplier.name}">
 						<div class="form-group row">
-							<div class="offset-xs-3 col-xs-9">
+							<div class="offset-lg-3 col-lg-9">
 								<button type="submit" class="btn btn-default"
 									formaction="addsupplier">Add Supplier</button>
 							</div>
@@ -160,13 +199,15 @@
 					</c:if>
 					<c:if test="${!empty supplier.name}">
 						<div class="form-group row">
-							<div class="offset-xs-3 col-xs-9">
+							<div class="offset-lg-3 col-lg-9">
 								<button type="submit" class="btn btn-default"
 									formaction="updatesupplierdata">Update Supplier</button>
 							</div>
 						</div>
 					</c:if>
+
 				</form:form>
+
 			</div>
 
 			<div class="container">
@@ -196,9 +237,9 @@
 								class="btn btn-danger">DELETE</a></td>
 						</tr>
 					</c:forEach>
-
 				</table>
 			</div>
+
 		</div>
 
 
@@ -209,51 +250,70 @@
 			<div class="container">
 
 				<h3>Add Product</h3>
+
+
 				<form:form modelAttribute="product" enctype="multipart/form-data">
 
 					<form:input type="hidden" class="form-control" id="id" path="id" />
 
+
 					<div class="form-group row">
-						<label for="brand" class="col-xs-3 col-form-label mr-4">Brand</label>
-						<div class="col-xs-9">
+						<label for="brand" class="col-lg-3 col-form-label">Brand</label>
+
+						<div class="col-lg-9">
 							<form:input type="text" class="form-control" id="brand"
 								path="brand" required="true" />
 						</div>
 					</div>
+
+
 					<div class="form-group row">
-						<label for="name" class="col-xs-3 col-form-label mr-2">Product
+						<label for="name" class="col-lg-3 col-form-label">Product
 							Name</label>
-						<div class="col-xs-9">
+						<div class="col-lg-9">
 							<form:input type="text" class="form-control" id="name"
 								path="name" required="true" />
 						</div>
 					</div>
+
+
 					<div class="form-group row">
-						<label for="description" class="col-xs-3 col-form-label mr-2">Description</label>
-						<div class="col-xs-9">
+						<label for="description" class="col-lg-3 col-form-label">Description</label>
+
+						<div class="col-lg-9">
 							<form:textarea type="text" class="form-control" id="description"
 								rows="3" path="description" cols="50" required="true" />
 						</div>
-					</div>
-					<div class="form-group row">
-						<label for="price" class="col-xs-3 col-form-label mr-2">Price</label>
-						<div class="col-xs-9">
-							<form:input type="text" class="form-control" id="price"
-								path="price" required="true" />
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="stock" class="col-xs-3 col-form-label mr-2">Stock</label>
-						<div class="col-xs-9">
-							<form:input type="text" class="form-control" id="stock"
-								path="stock" required="true" />
-						</div>
+
 					</div>
 
 					<div class="form-group row">
-						<label for="stock" class="col-xs-3 col-form-label mr-2">Select
+						<label for="price" class="col-lg-3 col-form-label">Price</label>
+
+						<div class="col-lg-9">
+							<form:input type="text" class="form-control" id="price"
+								path="price" required="true" />
+						</div>
+
+					</div>
+
+					<div class="form-group row">
+						<label for="stock" class="col-lg-3 col-form-label">Stock</label>
+
+						<div class="col-lg-9">
+							<form:input type="text" class="form-control" id="stock"
+								path="stock" required="true"/>
+						</div>
+
+					</div>
+
+
+
+					<div class="form-group row">
+						<label for="stock" class="col-lg-3 col-form-label">Select
 							Category</label>
-						<div class="col-xs-9">
+
+						<div class="col-lg-9">
 							<form:select class="custom-select" path="categoryId">
 								<option selected>Select Category</option>
 								<c:forEach var="list" items="${categoryList}">
@@ -261,12 +321,13 @@
 								</c:forEach>
 							</form:select>
 						</div>
-					</div>
 
+					</div>
 					<div class="form-group row">
-						<label for="stock" class="col-xs-3 col-form-label mr-2">Select
+						<label for="stock" class="col-lg-3 col-form-label">Select
 							Supplier</label>
-						<div class="col-xs-9">
+
+						<div class="col-lg-9">
 							<form:select class="custom-select" path="supplierId">
 								<option selected>Select Supplier</option>
 								<c:forEach var="list" items="${supplierList}">
@@ -274,21 +335,22 @@
 								</c:forEach>
 							</form:select>
 						</div>
+
 					</div>
 
-
 					<div class="form-group row">
-						<label for="mimage" class="col-xs-3 col-form-label mr-2">Select
+						<label for="mimage" class="col-lg-3 col-form-label">Select
 							Image</label>
-						<div class="col-xs-9">
+						<div class="col-lg-9">
 							<form:input type="file" class="form-control" id="mimage"
 								path="mimage" required="true" />
 						</div>
 					</div>
 
+
 					<c:if test="${empty product.brand}">
 						<div class="form-group row">
-							<div class="offset-xs-3 col-xs-9">
+							<div class="offset-lg-3 col-lg-9">
 								<button type="submit" class="btn btn-default"
 									formaction="addproduct">Add Product</button>
 							</div>
@@ -296,16 +358,17 @@
 					</c:if>
 					<c:if test="${!empty product.brand}">
 						<div class="form-group row">
-							<div class="offset-xs-3 col-xs-9">
+							<div class="offset-lg-3 col-lg-9">
 								<button type="submit" class="btn btn-default"
 									formaction="updateproductdata">Update Product</button>
 							</div>
 						</div>
 					</c:if>
 				</form:form>
+
 			</div>
 
-			<div class="container">
+			<div class="container-fluid">
 				<h3>List of Products</h3>
 				<table class="table table-sm table-bordered table-striped">
 					<thead>
@@ -322,8 +385,8 @@
 					</thead>
 
 					<c:forEach var="list" items="${productList}">
-						<td><img src="${images}/products/${list.id}.jpg" class="img-thumbnail"
-							height="100" width="100"></td>
+					<tr>	<td><img src="${images}/products/${list.id}.jpg"
+							class="img-thumbnail" height="100" width="100"></td>
 						<td>${list.id}</td>
 						<td>${list.brand}</td>
 						<td>${list.name}</td>
@@ -341,9 +404,10 @@
 			</div>
 		</div>
 	</div>
+
 </div>
 
 
-
 <%@include file="./shared/footer.jsp"%>
-
+</body>
+</html>

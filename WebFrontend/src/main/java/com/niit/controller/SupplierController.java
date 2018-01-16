@@ -36,7 +36,6 @@ public class SupplierController {
 	@RequestMapping(value = "/addsupplier")
 	public String addSupplier(@ModelAttribute("supplier") Supplier supplier, Model m, HttpSession hs) {
 		supplierDao.addSupplier(supplier);
-		;
 		refreshSupplierSession(hs, m);
 		return "admincontrol";
 	}
@@ -52,6 +51,7 @@ public class SupplierController {
 	public String updateSupplier(@PathVariable("id") int id, Model m, HttpSession hs) {
 		refreshSupplierSession(hs, m);
 		Supplier supplier = supplierDao.getSupplierById(id);
+		m.addAttribute("supplier", supplier);
 		return "admincontrol";
 	}
 

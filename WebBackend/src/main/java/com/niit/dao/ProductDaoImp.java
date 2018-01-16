@@ -59,4 +59,16 @@ public class ProductDaoImp implements ProductDao {
 
 	}
 
+	@Override
+	public List<Product> retrieveProductByName(String name) {
+		
+		Query query=sessionFactory.getCurrentSession().createQuery("from Product where lower(name) like '%"+name+"%' ");
+		List<Product> list=query.list();
+		
+		return list;
+		
+	}
+
+
+
 }

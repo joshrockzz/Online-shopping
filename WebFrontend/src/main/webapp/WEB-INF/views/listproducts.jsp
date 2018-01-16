@@ -1,9 +1,8 @@
 <%@include file="./shared/navigation.jsp"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<br/>
 <div class="container-fluid">
-
-
+<c:choose>
+<c:when test="${ search!=true}">
 	<div class="row">
 		<div class="col-lg-12">
 			<c:if test="${ userClickAllProducts==true}">
@@ -29,7 +28,6 @@
 
 				</ul>
 			</c:if>
-
 			<div class="container-fluid">
 
 				<table class="table table-sm table-bordered">
@@ -44,16 +42,18 @@
 							<td></td>
 						</tr>
 					</thead>
+
 					<c:forEach var="list" items="${productList}">
 						<tbody>
 							<tr>
+								<a href="${contextRoot}/singleproduct${list.id}">
 								<td><img src="${images}/products/${list.id}.jpg"
-									class="img-thumbnail" height="150" width="150"></td>
+									class="img-thumbnail" height="150" width="150"></td></a>
 								<td>${list.brand }</td>
 								<td>${list.name}</td>
 								<td><i class="fa fa-inr" aria-hidden="true"></i>
 									${list.price}</td>
-
+								
 								<c:choose>
 									<c:when test="${list.stock<1}">
 										<td><h6>
@@ -66,7 +66,7 @@
 								</c:choose>
 
 								<security:authorize access="hasAuthority('USER')">
-									<td>
+									<!-- 		<td>
 										<form action="cartadd${list.id}">
 											<input type="number" name=quant value="1" size="2"
 												style="width: 40px;" />
@@ -74,14 +74,15 @@
 
 									<td><button type="submit" class="btn btn-primary">Add
 											Cart</button>
-										</form> <a href="${contextRoot}/singleproduct${list.id}"><button
+										</form> -->
+									<td><a href="${contextRoot}/singleproduct${list.id}"><button
 												type="button" class="btn btn-primary">View</button></a></td>
 							</tr>
 							</security:authorize>
 
 
 							<security:authorize access="isAnonymous()">
-								<td>
+								<!-- 	<td>
 									<form action="cartadd${list.id}">
 										<input type="number" name=quant value="1" size="2"
 											style="width: 40px;" />
@@ -89,7 +90,8 @@
 
 								<td><button type="submit" class="btn btn-primary">Add
 										Cart</button>
-									</form> <a href="${contextRoot}/singleproduct${list.id}"><button
+									</form> -->
+								<td><a href="${contextRoot}/singleproduct${list.id}"><button
 											type="button" class="btn btn-primary">View</button></a></td>
 								</tr>
 							</security:authorize>
@@ -100,16 +102,29 @@
 									href='<c:url value="updateproduct${list.id}"/>'>Edit </a> <a
 									href='<c:url value="deleteproduct${list.id}"/>'><button
 											type="button" class="btn btn-primary">Delete</button></a></td>
+
 								</tr>
 							</security:authorize>
 
 
 						</tbody>
 					</c:forEach>
+
 				</table>
 			</div>
 		</div>
 	</div>
+	</c:when>
+	<c:otherwise>
+	<div class="container">
+	<div class="jumbotron">
+
+				<h3 class="text-center">Sorry,no result found!</h3>
+
+			</div>
+			</div>
+			</c:otherwise>
+</c:choose>
 </div>
 
 <%@include file="./shared/footer.jsp"%>

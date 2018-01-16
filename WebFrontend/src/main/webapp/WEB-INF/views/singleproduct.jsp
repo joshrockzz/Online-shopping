@@ -1,4 +1,4 @@
-<%@include file="./shared/navigation.jsp"%>
+
 
 <div class="container">
 
@@ -88,4 +88,3 @@
 
 </div>
 
-<%@include file="./shared/footer.jsp"%>

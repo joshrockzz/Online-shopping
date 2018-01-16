@@ -1,4 +1,4 @@
-<%@include file="./shared/navigation.jsp"%>
+
 
 <div class="container">
 
@@ -19,7 +19,7 @@
 						alt="First slide"></a>
 				</div>
 				<div class="carousel-item">
-				<a href="${contextRoot}/categoryproduct${3}">
+				<a href="${contextRoot}/categoryproduct${38}">
 					<img class="d-block w-100" src="${images}/corosul1.jpg"
 						alt="Second slide"></a>
 				</div>
@@ -37,11 +37,13 @@
 				aria-hidden="true"></span> <span class="sr-only">Next</span>
 			</a>
 		</div>
-		<br />
+		<br/>
+		<br/>
 		<div class="row">
 
 			<h3>Popular Products</h3>
 		</div>
+		<br/>
 
 		<div class="row">
 
@@ -129,4 +131,3 @@
 </div>
 <!-- /.container -->
 
-<%@include file="./shared/footer.jsp"%>

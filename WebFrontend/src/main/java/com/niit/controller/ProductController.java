@@ -70,7 +70,6 @@ public class ProductController {
 	@RequestMapping(value = "/deleteproduct{id}")
 	public String deleteProduct(@PathVariable("id") int id, Model m, HttpSession hs) {
 		productDao.deleteProduct(id);
-		;
 		refreshProductSession(hs, m);
 		return "admincontrol";
 	}
@@ -86,17 +85,17 @@ public class ProductController {
 	@RequestMapping(value = "/updateproductdata")
 	public String updateProductData(@ModelAttribute("product") Product product, Model m, HttpSession hs) {
 		productDao.updateProduct(product);
-		;
 		refreshProductSession(hs, m);
 		return "admincontrol";
 	}
 
 	@RequestMapping(value = { "/singleproduct{id}" })
 	public ModelAndView singleProduct(@PathVariable int id) {
-		ModelAndView mv = new ModelAndView("singleproduct");
+		ModelAndView mv = new ModelAndView("index");
 		Product product = productDao.getProductById(id);
 		mv.addObject("title", product.getName());
 		mv.addObject("product", product);
+		mv.addObject("userClickSingleProduct", true);
 		return mv;
 	}
 

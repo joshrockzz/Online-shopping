@@ -129,4 +129,4 @@
 		}, 3000);
 	</script>
 
-	<%@include file="./shared/footer.jsp"%>
+<%@include file="./shared/footer.jsp"%>

@@ -1,4 +1,4 @@
-<%@include file="./shared/navigation.jsp"%>
+
 <div class="container">
 	<div class='row'>
 
@@ -25,7 +25,7 @@
 				&nbsp;&nbsp;&nbsp;${usermodel.contact}
 			</div>
 			<div class='form-row'>
-				&nbsp;&nbsp;<label class='control-label'>Address: </label>&nbsp; <br />&nbsp;&nbsp;&nbsp;${usermodel.address}
+				&nbsp;&nbsp;<label class='control-label'>Address: </label>&nbsp;&nbsp;&nbsp;&nbsp;${usermodel.address}
 			</div>
 			<div class='form-row'>
 				&nbsp;&nbsp;<label class='control-label'>Country: </label>&nbsp;
@@ -99,4 +99,3 @@
 	</div>
 </div>
 
-<%@include file="./shared/footer.jsp"%>
